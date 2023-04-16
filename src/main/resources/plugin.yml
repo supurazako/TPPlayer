@@ -1,0 +1,4 @@
+name: TPPlayer
+version: '${project.version}'
+main: io.github.supurazako.tpplayer.TPPlayer
+api-version: 1.19
