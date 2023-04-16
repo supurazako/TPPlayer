@@ -9,8 +9,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 
+import java.util.Locale;
 import java.util.ResourceBundle;
-
+import java.util.logging.Logger;
 
 public class TPPlayerCommand implements CommandExecutor {
 
@@ -23,7 +24,7 @@ public class TPPlayerCommand implements CommandExecutor {
     }
 
 
-    private static final String RESOURCE_BUNDLE_NAME = "main/resources/message";
+    private static final String RESOURCE_BUNDLE_NAME = "message";
 
 
     private boolean isValidPlayerName(String playerName) {
@@ -44,6 +45,7 @@ public class TPPlayerCommand implements CommandExecutor {
             String locale = player.locale().toString();
             if (locale.contains("_")) {
                 locale = locale.split("_")[0]; // ロケールから言語コードのみを取得
+                System.out.println(locale);
                 return locale;
             } else {
                 // ロケールがnullまたは不正な形式の場合、デフォルト言語を返す
@@ -65,9 +67,10 @@ public class TPPlayerCommand implements CommandExecutor {
             ResourceBundle bundle;
             String language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
             if (language.equalsIgnoreCase(("ja"))) {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_ja.properties");
+                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + Locale.JAPANESE);
+                System.out.println(bundle);
             } else {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_en.properties");
+                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + Locale.ENGLISH);
             }
 
 
