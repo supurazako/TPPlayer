@@ -65,9 +65,9 @@ public class TPPlayerCommand implements CommandExecutor {
             ResourceBundle bundle;
             String language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
             if (language.equalsIgnoreCase(("ja"))) {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_ja");
+                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_ja.properties");
             } else {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_en");
+                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + "_en.properties");
             }
 
 
