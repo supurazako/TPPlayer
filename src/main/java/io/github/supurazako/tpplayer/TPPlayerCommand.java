@@ -23,7 +23,7 @@ public class TPPlayerCommand implements CommandExecutor {
     }
 
 
-    private static final String RESOURCE_BUNDLE_NAME = "main.resources.message";
+    private static final String RESOURCE_BUNDLE_NAME = "main/resources./message";
 
 
     private boolean isValidPlayerName(String playerName) {
