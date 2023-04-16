@@ -2,3 +2,10 @@ name: TPPlayer
 version: '1.0.0'
 main: io.github.supurazako.tpplayer.TPPlayer
 api-version: 1.19
+commands:
+  tpplayer:
+    aliases: [tpp]
+    description: TP to player.
+    permission: tpplayer.command.tpplayer
+    permission-message: require permission
+    usage: /tpplayer <player name>.

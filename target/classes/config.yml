@@ -1,7 +1,3 @@
 # config.ymlファイルの例
 
 # パーミッションの定義
-permissions: # パーミッションのキー
-  tpplayer.tp:
-    description: Allows the use of tpplayer command
-    default: true
