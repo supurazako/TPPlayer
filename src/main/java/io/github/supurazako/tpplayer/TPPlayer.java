@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+
 import java.io.File;
 import java.io.IOException;
 public final class TPPlayer extends JavaPlugin {
@@ -18,6 +19,7 @@ public final class TPPlayer extends JavaPlugin {
     public void onEnable() {
         // プラグインが有効になったときに実行される処理
         // コマンドの登録
+
         PluginCommand tpplayerCommand = getCommand("tpplayer");
         if (tpplayerCommand != null) {
             tpplayerCommand.setExecutor(new TPPlayerCommand());
