@@ -97,6 +97,9 @@ public class TPPlayerCommand implements CommandExecutor {
 
             Player player = (Player) sender; //コマンドを実行したプレイヤーを取得
 
+            String targetPlayerName = args[0];
+            Player targetPlayer = player.getServer().getPlayer(targetPlayerName); //テレポート先のプレイヤーを取得
+
             //権限をチェック
             if(config.getBoolean("tpplayer.tp")) {
                 if (!sender.hasPermission("tpplayer.tp")) {
@@ -111,8 +114,6 @@ public class TPPlayerCommand implements CommandExecutor {
                 return true;
             }
 
-            String targetPlayerName = args[0];
-
             //プレイヤー名が正規表現かチェック
             if (!isValidPlayerName(targetPlayerName)) {
                 sender.sendMessage(invalidPlayerName);
@@ -120,7 +121,7 @@ public class TPPlayerCommand implements CommandExecutor {
             }
 
 
-            Player targetPlayer = player.getServer().getPlayer(targetPlayerName); //テレポート先のプレイヤーを取得
+
 
             //テレポート先のプレイヤーがオンラインかチェック
             if (targetPlayer == null) {
