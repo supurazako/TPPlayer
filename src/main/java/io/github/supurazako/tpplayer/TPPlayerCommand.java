@@ -16,9 +16,8 @@ public class TPPlayerCommand implements CommandExecutor {
 
     private TPPlayer tpPlayer;
 
-
-    public void setTpPlayer(TPPlayer tpPlayer) {
-        this.tpPlayer = tpPlayer;
+    public TPPlayerCommand(TPPlayer tpPlayerA) {
+        this.tpPlayer = tpPlayerA;
     }
 
 
@@ -97,6 +96,12 @@ public class TPPlayerCommand implements CommandExecutor {
 
             Player player = (Player) sender; //コマンドを実行したプレイヤーを取得
 
+            //引数が足りない場合は使い方を表示する
+            if (args.length < 1) {
+                sender.sendMessage(usage);
+                return true;
+            }
+
             String targetPlayerName = args[0];
             Player targetPlayer = player.getServer().getPlayer(targetPlayerName); //テレポート先のプレイヤーを取得
 
@@ -108,11 +113,7 @@ public class TPPlayerCommand implements CommandExecutor {
                 }
             }
 
-            //引数が足りない場合は使い方を表示する
-            if (args.length < 1) {
-                sender.sendMessage(usage);
-                return true;
-            }
+
 
             //プレイヤー名が正規表現かチェック
             if (!isValidPlayerName(targetPlayerName)) {
