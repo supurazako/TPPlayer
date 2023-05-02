@@ -10,6 +10,6 @@ commands:
     permission-message: require permission
     usage: /tpplayer <player name>.
 permissions:
-  tpplayer.*:
+  tpplayer.command.tpplayer:
     description: TPPlayer Wild
     default: true
