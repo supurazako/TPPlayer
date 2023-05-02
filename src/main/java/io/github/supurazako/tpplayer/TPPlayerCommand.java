@@ -8,10 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class TPPlayerCommand implements CommandExecutor {
 
@@ -39,21 +37,17 @@ public class TPPlayerCommand implements CommandExecutor {
 
 
     //ユーザーの言語を取得するメソッド
-    private String getLanguage(CommandSender sender) {
+    private Locale getLanguage(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            String locale = player.locale().toString();
-            if (locale.contains("_")) {
-                locale = locale.split("_")[0]; // ロケールから言語コードのみを取得
-                System.out.println(locale);
-                return locale;
-            } else {
-                // ロケールがnullまたは不正な形式の場合、デフォルト言語を返す
-                return "en";
-            }
+
+
+            Locale locale = player.locale();
+            System.out.println(locale);
+            return locale;
         } else {
             // Player以外の場合はデフォルト言語を返す
-            return "en";
+            return Locale.ENGLISH;
         }
     }
 
@@ -64,14 +58,24 @@ public class TPPlayerCommand implements CommandExecutor {
         //コマンドの実行時に実行される処理
 
         try {
+//            ResourceBundle bundle;
+//            Locale language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
+////
+////            if (language.equals(Locale.JAPANESE)) {
+////                System.out.println("if section");
+////                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, Locale.JAPANESE);
+////
+////            } else {
+////                System.out.println("else section");
+////                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, Locale.ENGLISH);
+//
+//            }
+
+
             ResourceBundle bundle;
-            String language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
-            if (language.equalsIgnoreCase(("ja"))) {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + Locale.JAPANESE);
-                System.out.println(bundle);
-            } else {
-                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME + Locale.ENGLISH);
-            }
+            Locale language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
+
+            bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, language);
 
 
             FileConfiguration config = tpPlayer.getConfig();
