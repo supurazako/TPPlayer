@@ -41,9 +41,7 @@ public class TPPlayerCommand implements CommandExecutor {
             Player player = (Player) sender;
 
 
-            Locale locale = player.locale();
-            System.out.println(locale);
-            return locale;
+            return player.locale();
         } else {
             // Player以外の場合はデフォルト言語を返す
             return Locale.ENGLISH;
