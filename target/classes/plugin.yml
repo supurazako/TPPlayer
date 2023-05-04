@@ -1,5 +1,5 @@
 name: TPPlayer
-version: '1.0.0'
+version: '1.0.1'
 main: io.github.supurazako.tpplayer.TPPlayer
 api-version: 1.19
 commands:

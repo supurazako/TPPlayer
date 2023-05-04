@@ -57,18 +57,6 @@ public class TPPlayerCommand implements CommandExecutor {
         //コマンドの実行時に実行される処理
 
         try {
-//            ResourceBundle bundle;
-//            Locale language = getLanguage(sender); //ユーザーの言語を取得するメソッドの呼び出し
-////
-////            if (language.equals(Locale.JAPANESE)) {
-////                System.out.println("if section");
-////                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, Locale.JAPANESE);
-////
-////            } else {
-////                System.out.println("else section");
-////                bundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, Locale.ENGLISH);
-//
-//            }
 
 
             ResourceBundle bundle;
@@ -86,6 +74,7 @@ public class TPPlayerCommand implements CommandExecutor {
             String noPermission = bundle.getString("NO_PERMISSION");
             String usage = bundle.getString("USAGE");
             String offline = bundle.getString("OFFLINE");
+            String teleported = bundle.getString("TELEPORTED");
 
 
             //コマンドを実行したのがプレイヤーでない場合は処理を終了する
@@ -132,8 +121,9 @@ public class TPPlayerCommand implements CommandExecutor {
 
             //テレポートを実行
             player.teleport(targetPlayer);
+            String teleportedMessage = String.format(teleported, targetPlayerName);
 
-            sender.sendMessage("Teleported to " + targetPlayer.getName() + ".");
+            sender.sendMessage(teleportedMessage);
             return true;
         } catch (Exception e) {
             // 例外が発生した場合の処理
